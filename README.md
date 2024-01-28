@@ -54,7 +54,7 @@ Following is the structure of project:
 
 
 ## Sequence Diagram
-
+![Alt text](project-flowchart.drawio.png?raw=true "Title")
  
 
 
