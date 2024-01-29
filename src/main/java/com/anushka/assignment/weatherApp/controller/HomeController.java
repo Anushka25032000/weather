@@ -70,15 +70,4 @@ public class HomeController {
 
     }
 
-//    @GetMapping("/resultPage")
-//    public String showResultPage(Model model) {
-//        ArrayList<ResponseObj> ans = weatherService.getWeatherForCity("delhi");
-//
-//        System.out.println("Model --> " + model.getAttribute("ans"));
-//        return "result.html";
-////        model.addAttribute("message", "Hello, Spring Boot!");
-//
-////        return "result.html"; // The name of the result page HTML template
-//    }
-
 }

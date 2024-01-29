@@ -12,9 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 @Service
 public class WeatherServiceImpl implements WeatherService {
@@ -33,13 +31,33 @@ public class WeatherServiceImpl implements WeatherService {
 
     private WeatherApiResponse fetchWeatherDetails( String city) {
 
-        // Call OpenWeatherMap API to get weather data
-        // https://api.openweathermap.org/data/2.5/forecast?q=london&appid=d2929e9483efc82c82c32ee7e02d563e&cnt=10
+        // fetch current date
+        String currentTime = Instant.now().toString();
+        String currentDate = currentTime.substring(0,10);
+        String identifier = currentDate + ":"+ city;
 
-        String apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey + "&cnt=32";
+        WeatherApiResponse apiResponse;
 
-        RestTemplate restTemplate = new RestTemplate();
-        WeatherApiResponse apiResponse = restTemplate.getForObject(apiUrl, WeatherApiResponse.class);
+        if(cacheMap.containsKey(identifier))
+        {
+            System.out.println("DATA FROM CACHE !!!!!");
+            apiResponse = cacheMap.get(identifier);
+        }
+        else
+        {
+            // Call OpenWeatherMap API to get weather data
+            // https://api.openweathermap.org/data/2.5/forecast?q=london&appid=d2929e9483efc82c82c32ee7e02d563e&cnt=10
+
+            System.out.println("CALLING OPENWEATHER API !!!");
+            String apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey + "&cnt=32";
+
+            RestTemplate restTemplate = new RestTemplate();
+            apiResponse = restTemplate.getForObject(apiUrl, WeatherApiResponse.class);
+
+            cacheMap.put(identifier, apiResponse);
+        }
+
+
 
         return apiResponse;
     }
