@@ -142,7 +142,7 @@ public class WeatherServiceImpl implements WeatherService {
 //            System.out.println("temp  = " + temp_min +"-------"+temp_max);
 //            System.out.println("res == "+ apiResponse.list.get(nextDateIndex).main.temp_max + " -----"+apiResponse.list.get(nextDateIndex).main.temp_min );
 
-            resp.setDate(currentDate);
+            resp.setDate(nextdate);
             resp.setTemp_max(String.format("%.2f", temp_max ) + '°' +"C");
             resp.setTemp_min(String.format("%.2f",temp_min) + '°' + "C");
             resp.setMessage(message);
