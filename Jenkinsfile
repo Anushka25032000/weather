@@ -2,27 +2,38 @@ pipeline {
     agent any
 
     stages {
-        stage('Build docker image') {
-            when {
-                beforeAgent true
-            }
+        stage('Build') {
             steps {
                 script {
                     echo 'Building the project...'
-                    sh 'docker build -f Dockerfile -t weather-app .'
+                    sh 'mvn clean install'
                 }
             }
         }
 
-        stage('Deploy docker image') {
-            when {
-                beforeAgent true
-                branch 'master'
+        stage('Test') {
+            steps {
+                script {
+                    echo 'Running tests...'
+                    sh 'mvn test'
+                }
             }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    echo 'Building Docker image...'
+                    sh 'docker build -t my-spring-app .'
+                }
+            }
+        }
+
+        stage('Publish Docker Image Locally') {
             steps {
                 script {
                     echo 'Publishing Docker image locally...'
-                    sh 'docker run -p 8080:8080 -d weather-app'
+                    sh 'docker run -p 8080:8080 -d my-spring-app'
                 }
             }
         }

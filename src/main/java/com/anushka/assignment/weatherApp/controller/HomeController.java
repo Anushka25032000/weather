@@ -58,7 +58,7 @@ public class HomeController {
             model.addAttribute("city", city);
             model.addAttribute("day1", ans.get(0));
             model.addAttribute("day2", ans.get(1));
-            model.addAttribute("day3", ans.get(2));
+            model.addAttribute("day3", ans.get(1));
 
             return "result.html";
         }
