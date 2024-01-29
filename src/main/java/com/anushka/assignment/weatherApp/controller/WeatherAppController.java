@@ -2,14 +2,12 @@ package com.anushka.assignment.weatherApp.controller;
 
 
 import com.anushka.assignment.weatherApp.model.ResponseObj;
-import com.anushka.assignment.weatherApp.model.WeatherApiResponse;
 import com.anushka.assignment.weatherApp.service.WeatherService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 
