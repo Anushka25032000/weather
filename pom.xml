@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.anushka.assignment</groupId>
 	<artifactId>weatherApp</artifactId>
-	<version>0.1.0</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>weatherApp</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
