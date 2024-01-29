@@ -38,6 +38,12 @@ public class WeatherServiceImpl implements WeatherService {
 
         WeatherApiResponse apiResponse;
 
+        // clearing Cache Data
+        if(cacheMap.size()>20)
+        {
+            cacheMap.clear();
+        }
+
         if(cacheMap.containsKey(identifier))
         {
             System.out.println("DATA FROM CACHE !!!!!");
