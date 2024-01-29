@@ -29,6 +29,9 @@ Service encapsulates the business logic and acts as intermediary with rest contr
 Service Implementation :
 Implementation classes actually provide the logic of service interfaces
 
+Caching:
+A caching data structure which stores recently cities and timestamp in a map and gives response immediately if that city is present. Optimization: Further optimization can be to use LRU but for now its not required.
+
 DTOs (Data transfer Objects)/ model/ entities
 
 Data is passed between services and controllers in form of dtos which are defined for different models.
@@ -70,7 +73,3 @@ Run command ‘docker build DockerFile -t weather-app .’
 Run command to deploy ‘docker run -p 8080:8080 -d weather-app’
 Service comes up on port 8080
 - **Local set up**: Required: java 17
-
-
-
-![image](https://github.com/Anushka25032000/weather/assets/157974234/688fd4b5-d294-429b-a434-1386e6ecb00f)
